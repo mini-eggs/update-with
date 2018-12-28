@@ -35,21 +35,29 @@ let updateAttr = (a, b) => {
 };
 
 let updateChildren = (a, b) => {
-  if (a.children.lenghlength > b.children.length) {
+  if (a.childNodes.lenghlength > b.childNodes.length) {
     // Remove extra children
-    for (let i = a.children.length; i > a.children.length - b.children; i--) {
-      a.removeChild(a.children[i - 1]);
+    for (let i = a.childNodes.length; i > a.childNodes.length - b.childNodes; i--) {
+      a.removeChild(a.childNodes[i - 1]);
     }
   } else {
     // Append new children
-    for (let i = a.children.length; i < b.children.length; i++) {
-      a.appendChild(b.children[i - 1]);
+    for (let i = a.childNodes.length; i < b.childNodes.length; i++) {
+      a.appendChild(b.childNodes[i - 1]);
     }
   }
 
   // Update all our children as well.
-  for (let i = 0; i < a.children.length; i++) {
-    a.children[i].updateWith(b.children[i]);
+  for (let i = 0; i < a.childNodes.length; i++) {
+    let prevChild = a.childNodes[i];
+    let nextChild = b.childNodes[i];
+    if (prevChild.updateWith) {
+      // Business as usual.
+      prevChild.updateWith(nextChild);
+    } else {
+      // Text node.
+      prevChild.data = nextChild.data;
+    }
   }
 };
 
