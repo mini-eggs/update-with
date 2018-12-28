@@ -1,0 +1,16 @@
+{
+  "name": "update-with",
+  "version": "0.0.1",
+  "description": "A better .replaceWith. Coming soon.",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "author": "Evan M Jones <evanjones4040@gmail.com> (https://evanjon.es/)",
+  "license": "MIT",
+  "dependencies": {
+    "ava": "^1.0.1",
+    "browser-env": "^3.2.5",
+    "ogle-tr-122b": "0.0.3"
+  }
+}
